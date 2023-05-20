@@ -1,0 +1,50 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: fitnessapi-deployment
+  labels:
+    app: fitnessapi
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: fitnessapi
+  template:
+    metadata:
+      labels:
+        app: fitnessapi
+    spec:
+      containers:
+        - name: fitnessapi
+          image: fitnessacr.azurecr.io/fitnessapi:v2
+          imagePullPolicy: IfNotPresent          
+          ports:
+            - containerPort: 80
+          env:
+            - name: ASPNETCORE_ENVIRONMENT
+              value: Development
+            - name: DatabaseSettings__ConnectionString
+              valueFrom:
+                  configMapKeyRef:
+                    name: mongo-configmap
+                    key: connection_string
+          resources:
+            requests:
+              memory: "64Mi"
+              cpu: "0.1"
+            limits:
+              memory: "128Mi"
+              cpu: "0.3"
+      imagePullSecrets:
+        - name: acr-secret
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: fitnessapi-service
+spec:
+  selector:
+    app: fitnessapi
+  ports:
+    - protocol: TCP
+      port: 80           

@@ -1,0 +1,50 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: announcementapi-deployment
+  labels:
+    app: announcementapi
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: announcementapi
+  template:
+    metadata:
+      labels:
+        app: announcementapi
+    spec:
+      containers:
+        - name: announcementapi
+          image: fitnessacr.azurecr.io/announcementapi:v2
+          imagePullPolicy: IfNotPresent          
+          ports:
+            - containerPort: 80
+          env:
+            - name: ASPNETCORE_ENVIRONMENT
+              value: Development
+            - name: DatabaseSettings__ConnectionString
+              valueFrom:
+                  configMapKeyRef:
+                    name: mongo-configmap
+                    key: connection_string
+          resources:
+            requests:
+              memory: "64Mi"
+              cpu: "0.1"
+            limits:
+              memory: "128Mi"
+              cpu: "0.3"
+      imagePullSecrets:
+        - name: acr-secret
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: announcementapi-service
+spec:
+  selector:
+    app: announcementapi
+  ports:
+    - protocol: TCP
+      port: 80           
