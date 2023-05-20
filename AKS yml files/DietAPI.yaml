@@ -27,7 +27,7 @@ spec:
               valueFrom:
                   configMapKeyRef:
                     name: mongo-configmap
-                    key: connection_string
+                    key: diet_connection_string
           resources:
             requests:
               memory: "64Mi"

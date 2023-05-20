@@ -1,0 +1,15 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: api-configmap
+data:
+  announcement_api_url: http://announcementapi-service
+  challenge_api_url: http://challengeapi-service
+  chat_api_url: http://chatapi-service
+  diet_api_url: http://dietapi-service
+  fitness_api_url: http://fitnessapi-service
+  inquiry_api_url: http://inquiryapi-service
+  notification_api_url: http://notificationapi-service
+  plan_api_url: http://planapi-service
+  profile_api_url: http://profileapi-service
+  survey_api_url: http://surveyapi-service

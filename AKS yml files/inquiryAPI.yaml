@@ -1,22 +1,22 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: inquriyapi-deployment
+  name: inquiryapi-deployment
   labels:
-    app: inquriyapi
+    app: inquiryapi
 spec:
   replicas: 2
   selector:
     matchLabels:
-      app: inquriyapi
+      app: inquiryapi
   template:
     metadata:
       labels:
-        app: inquriyapi
+        app: inquiryapi
     spec:
       containers:
-        - name: inquriyapi
-          image: fitnessacr.azurecr.io/inquriyapi:v2
+        - name: inquiryapi
+          image: fitnessacr.azurecr.io/inquiryapi:v2
           imagePullPolicy: IfNotPresent          
           ports:
             - containerPort: 80
@@ -27,7 +27,7 @@ spec:
               valueFrom:
                   configMapKeyRef:
                     name: mongo-configmap
-                    key: connection_string
+                    key: inquiry_connection_string
           resources:
             requests:
               memory: "64Mi"
@@ -41,10 +41,10 @@ spec:
 apiVersion: v1
 kind: Service
 metadata:
-  name: inquriyapi-service
+  name: inquiryapi-service
 spec:
   selector:
-    app: inquriyapi
+    app: inquiryapi
   ports:
     - protocol: TCP
       port: 80           

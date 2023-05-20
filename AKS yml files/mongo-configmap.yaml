@@ -1,0 +1,15 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: mongo-configmap
+data:
+  announcement_connection_string: mongodb://username:password@announcementmongo-service:27017
+  challenge_connection_string: mongodb://username:password@challengemongo-service:27017
+  chat_connection_string: mongodb://username:password@chatmongo-service:27017
+  diet_connection_string: mongodb://username:password@dietmongo-service:27017
+  fitness_connection_string: mongodb://username:password@fitnessmongo-service:27017
+  inquiry_connection_string: mongodb://username:password@inquirymongo-service:27017
+  notification_connection_string: mongodb://username:password@notificationmongo-service:27017
+  plan_connection_string: mongodb://username:password@planmongo-service:27017
+  profile_connection_string: mongodb://username:password@profilemongo-service:27017
+  survery_connection_string: mongodb://username:password@surverymongo-service:27017
