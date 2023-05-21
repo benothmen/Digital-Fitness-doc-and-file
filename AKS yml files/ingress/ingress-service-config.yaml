@@ -1,0 +1,16 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: ingress-service-config
+  namespace: app
+data:
+  announcement-service-name: announcementapi-service
+  challenge-service-name: challengeapi-service
+  chat-service-name: chatapi-service
+  diet-service-name: dietapi-service
+  fitness-service-name: fitnessapi-service
+  inquiry-service-name: inquiryapi-service
+  notifiation-service-name: notificationapi-service
+  plan-service-name: planapi-service
+  profile-service-name: profileapi-service
+  survey-service-name: surveyapi-service

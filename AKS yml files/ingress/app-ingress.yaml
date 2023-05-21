@@ -1,0 +1,97 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: webapp-ingress
+  namespace: app
+  annotations:
+    kubernetes.io/ingress.class: nginx
+    nginx.ingress.kubernetes.io/ssl-redirect: "false"
+    nginx.ingress.kubernetes.io/use-regex: "true"
+    nginx.ingress.kubernetes.io/rewrite-target: /$1
+spec:
+  rules:
+  - http:
+      paths:
+      - backend:
+          serviceName: $(announcement-service-name)
+          servicePort: 80
+        path: /announcement(/|$)(.*)
+      - backend:
+          serviceName: $(challenge-service-name)
+          servicePort: 80
+        path: /challenge(/|$)(.*)
+      - backend:
+          serviceName: $(chat-service-name)
+          servicePort: 80
+        path: /chat(/|$)(.*)
+      - backend:
+          serviceName: $(diet-service-name)
+          servicePort: 80
+        path: /diet(/|$)(.*)
+      - backend:
+          serviceName: $(fitness-service-name)
+          servicePort: 80
+        path: /fitness(/|$)(.*)
+      - backend:
+          serviceName: $(inquiry-service-name)
+          servicePort: 80
+        path: /inquiry(/|$)(.*)
+      - backend:
+          serviceName: $(notification-service-name)
+          servicePort: 80
+        path: /notification(/|$)(.*)
+      - backend:
+          serviceName: $(plan-service-name)
+          servicePort: 80
+        path: /plan(/|$)(.*)
+      - backend:
+          serviceName: $(profile-service-name)
+          servicePort: 80
+        path: /profile(/|$)(.*)
+      - backend:
+          serviceName: $(survey-service-name)
+          servicePort: 80
+        path: /survey(/|$)(.*)
+  - host: frontend.52.142.236.126.nip.io # change the IP address here
+    http:
+      paths:
+      - backend:
+          serviceName: $(announcement-service-name)
+          servicePort: 80
+        path: /announcement(/|$)(.*)
+      - backend:
+          serviceName: $(challenge-service-name)
+          servicePort: 80
+        path: /challenge(/|$)(.*)
+      - backend:
+          serviceName: $(chat-service-name)
+          servicePort: 80
+        path: /chat(/|$)(.*)
+      - backend:
+          serviceName: $(diet-service-name)
+          servicePort: 80
+        path: /diet(/|$)(.*)
+      - backend:
+          serviceName: $(fitness-service-name)
+          servicePort: 80
+        path: /fitness(/|$)(.*)
+      - backend:
+          serviceName: $(inquiry-service-name)
+          servicePort: 80
+        path: /inquiry(/|$)(.*)
+      - backend:
+          serviceName: $(notification-service-name)
+          servicePort: 80
+        path: /notification(/|$)(.*)
+      - backend:
+          serviceName: $(plan-service-name)
+          servicePort: 80
+        path: /plan(/|$)(.*)
+      - backend:
+          serviceName: $(profile-service-name)
+          servicePort: 80
+        path: /profile(/|$)(.*)
+      - backend:
+          serviceName: $(survey-service-name)
+          servicePort: 80
+        path: /survey(/|$)(.*)
