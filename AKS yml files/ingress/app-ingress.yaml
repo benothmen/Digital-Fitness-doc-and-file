@@ -13,85 +13,85 @@ spec:
   - http:
       paths:
       - backend:
-          serviceName: $(announcement-service-name)
+          serviceName: ${ingress-config.ingress-service-config.announcement-service-name}
           servicePort: 80
         path: /announcement(/|$)(.*)
       - backend:
-          serviceName: $(challenge-service-name)
+          serviceName: ${ingress-config.ingress-service-config.challenge-service-name}
           servicePort: 80
         path: /challenge(/|$)(.*)
       - backend:
-          serviceName: $(chat-service-name)
+          serviceName: ${ingress-config.ingress-service-config.chat-service-name}
           servicePort: 80
         path: /chat(/|$)(.*)
       - backend:
-          serviceName: $(diet-service-name)
+          serviceName: ${ingress-config.ingress-service-config.diet-service-name}
           servicePort: 80
         path: /diet(/|$)(.*)
       - backend:
-          serviceName: $(fitness-service-name)
+          serviceName: ${ingress-config.ingress-service-config.fitness-service-name}
           servicePort: 80
         path: /fitness(/|$)(.*)
       - backend:
-          serviceName: $(inquiry-service-name)
+          serviceName: ${ingress-config.ingress-service-config.inquiry-service-name}
           servicePort: 80
         path: /inquiry(/|$)(.*)
       - backend:
-          serviceName: $(notification-service-name)
+          serviceName: ${ingress-config.ingress-service-config.notification-service-name}
           servicePort: 80
         path: /notification(/|$)(.*)
       - backend:
-          serviceName: $(plan-service-name)
+          serviceName: ${ingress-config.ingress-service-config.plan-service-name}
           servicePort: 80
         path: /plan(/|$)(.*)
       - backend:
-          serviceName: $(profile-service-name)
+          serviceName: ${ingress-config.ingress-service-config.profile-service-name}
           servicePort: 80
         path: /profile(/|$)(.*)
       - backend:
-          serviceName: $(survey-service-name)
+          serviceName: ${ingress-config.ingress-service-config.survey-service-name}
           servicePort: 80
         path: /survey(/|$)(.*)
   - host: frontend.52.142.236.126.nip.io # change the IP address here
     http:
       paths:
       - backend:
-          serviceName: $(announcement-service-name)
+          serviceName: ${ingress-config.ingress-service-config.announcement-service-name}
           servicePort: 80
         path: /announcement(/|$)(.*)
       - backend:
-          serviceName: $(challenge-service-name)
+          serviceName: ${ingress-config.ingress-service-config.challenge-service-name}
           servicePort: 80
         path: /challenge(/|$)(.*)
       - backend:
-          serviceName: $(chat-service-name)
+          serviceName: ${ingress-config.ingress-service-config.chat-service-name}
           servicePort: 80
         path: /chat(/|$)(.*)
       - backend:
-          serviceName: $(diet-service-name)
+          serviceName: ${ingress-config.ingress-service-config.diet-service-name}
           servicePort: 80
         path: /diet(/|$)(.*)
       - backend:
-          serviceName: $(fitness-service-name)
+          serviceName: ${ingress-config.ingress-service-config.fitness-service-name}
           servicePort: 80
         path: /fitness(/|$)(.*)
       - backend:
-          serviceName: $(inquiry-service-name)
+          serviceName: ${ingress-config.ingress-service-config.inquiry-service-name}
           servicePort: 80
         path: /inquiry(/|$)(.*)
       - backend:
-          serviceName: $(notification-service-name)
+          serviceName: ${ingress-config.ingress-service-config.notification-service-name}
           servicePort: 80
         path: /notification(/|$)(.*)
       - backend:
-          serviceName: $(plan-service-name)
+          serviceName: ${ingress-config.ingress-service-config.plan-service-name}
           servicePort: 80
         path: /plan(/|$)(.*)
       - backend:
-          serviceName: $(profile-service-name)
+          serviceName: ${ingress-config.ingress-service-config.profile-service-name}
           servicePort: 80
         path: /profile(/|$)(.*)
       - backend:
-          serviceName: $(survey-service-name)
+          serviceName: ${ingress-config.ingress-service-config.survey-service-name}
           servicePort: 80
         path: /survey(/|$)(.*)
