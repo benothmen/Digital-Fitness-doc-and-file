@@ -1,0 +1,166 @@
+version: '3.4'
+
+services:
+ # database part 
+
+  announcementdb:
+    container_name: announcementdb
+    restart: always
+    ports:
+      - "27017:27017"
+    volumes:
+      - mongo_data_announcement:/data/db 
+  plandb:
+    container_name: plandb
+    restart: always
+    ports:
+      - "27018:27017"
+    volumes:
+      - mongo_data_plan:/data/db
+  inquirydb:
+    container_name: inquirydb
+    restart: always
+    ports:
+      - "27019:27017"
+    volumes:
+      - mongo_data_inquiry:/data/db
+  notificationdb:
+    container_name: notificationdb
+    restart: always
+    ports:
+      - "27020:27017"
+    volumes:
+      - mongo_data_notification:/data/db
+  challengedb:
+    container_name: challengedb
+    restart: always
+    ports:
+      - "27021:27017"
+    volumes:
+      - mongo_data_challenge:/data/db
+  #chatdb:
+  #  container_name: chatdb
+  #  restart: always
+  #  ports:
+  #    - "27022:27017"
+  #  volumes:
+  #    - mongo_data_chat:/data/db
+  #dietdb:
+  #  container_name: dietdb
+  #  restart: always
+  #  ports:
+  #    - "27023:27017"
+  #  volumes:
+  #    - mongo_data_diet:/data/db
+  #fitnessdb:
+  #  container_name: fitnessdb
+  #  restart: always
+  #  ports:
+  #    - "27024:27017"
+  #  volumes:
+  #    - mongo_data_fitness:/data/db
+  #profiledb:
+  #  container_name: profiledb
+  #  restart: always
+  #  ports:
+  #    - "27025:27017"
+  #  volumes:
+  #    - mongo_data_profile:/data/db
+  #surveydb:
+  #  container_name: surveydb
+  #  restart: always
+  #  ports:
+  #    - "27026:27017"
+  #  volumes:
+  #    - mongo_data_profile:/data/db
+
+  # end of database part
+  # real time part
+  rabbitmq:
+    container_name: rabbitmq
+    restart: always
+    ports:
+      - "5672:5672"
+      - "15672:15672"
+
+  # end of real time part
+  # protainer part 
+
+  portainer:
+    container_name: portainer
+    restart: always
+    ports:
+      - "8080:8000"
+      - "9000:9000"
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+      - portainer_data:/data
+
+  # end of  part 
+  # service part 
+
+  announcement.api:
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+      - ASPNETCORE_URLS=http://+:80
+      - "DatabaseSettings:ConnectionString=mongodb://announcementdb:27017"
+    depends_on:
+      - announcementdb
+    ports:
+      - "8000:80"
+    volumes:
+      - ${APPDATA}/Microsoft/UserSecrets:/root/.microsoft/usersecrets:ro
+      - ${APPDATA}/ASP.NET/Https:/root/.aspnet/https:r
+  plan.api:
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+      - ASPNETCORE_URLS=http://+:80
+      - "DatabaseSettings:ConnectionString=mongodb://plandb:27018"
+    depends_on:
+      - plandb
+    ports:
+      - "8001:80"
+    volumes:
+      - ${APPDATA}/Microsoft/UserSecrets:/root/.microsoft/usersecrets:ro
+      - ${APPDATA}/ASP.NET/Https:/root/.aspnet/https:ro   
+
+  inquiry.api:
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+      - ASPNETCORE_URLS=http://+:80
+      - "DatabaseSettings:ConnectionString=mongodb://inquirydb:27019"
+    depends_on:
+      - inquirydb
+    ports:
+      - "8002:80"
+    volumes:
+      - ${APPDATA}/Microsoft/UserSecrets:/root/.microsoft/usersecrets:ro
+      - ${APPDATA}/ASP.NET/Https:/root/.aspnet/https:ro
+
+  notification.api:
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+      - ASPNETCORE_URLS=http://+:80
+      - "DatabaseSettings:ConnectionString=mongodb://notificationdb:27020"
+    depends_on:
+      - notificationdb
+      - rabbitmq 
+    ports:
+      - "8003:80"
+    volumes:
+      - ${APPDATA}/Microsoft/UserSecrets:/root/.microsoft/usersecrets:ro
+      - ${APPDATA}/ASP.NET/Https:/root/.aspnet/https:ro
+  challenge.api:
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+      - ASPNETCORE_URLS=http://+:80
+      - "DatabaseSettings:ConnectionString=mongodb://challengedb:27021"
+    depends_on:
+      - challengedb
+    ports:
+      - "8004:80"
+    volumes:
+      - ${APPDATA}/Microsoft/UserSecrets:/root/.microsoft/usersecrets:ro
+      - ${APPDATA}/ASP.NET/Https:/root/.aspnet/https:ro
+
+ # end of service part 

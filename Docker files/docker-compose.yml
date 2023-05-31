@@ -1,0 +1,73 @@
+version: '3.4'
+
+services:
+  announcementdb:
+    image: mongo
+  plandb:
+    image: mongo
+  inquirydb:
+    image: mongo
+  notificationdb:
+    image: mongo
+  challengedb:
+    image: mongo
+  #chatdb:
+  #  image: mongo
+  #dietdb:
+  #  image: mongo
+  #fitnessdb:
+  #  image: mongo
+  #profiledb:
+  #  image: mongo
+  #surveydb:
+  #  image: mongo
+  rabbitmq:
+    image: rabbitmq:3-management-alpine
+
+  portainer:
+    image: portainer/portainer-ce
+
+  announcement.api:
+    image: ${DOCKER_REGISTRY-}announcementapi
+    build:
+      context: .
+      dockerfile: Services/AnnouncementService/Announcement.API/Dockerfile
+
+  inquiry.api:
+    image: ${DOCKER_REGISTRY-}inquiryapi
+    build:
+      context: .
+      dockerfile: Services/InquiryService/Inquiry.API/Dockerfile
+
+  plan.api:
+    image: ${DOCKER_REGISTRY-}planapi
+    build:
+      context: .
+      dockerfile: Services/PlanService/Plan.API/Dockerfile
+
+  notification.api:
+    image: ${DOCKER_REGISTRY-}notificationapi
+    build:
+      context: .
+      dockerfile: Services/NotificationService/Notification.API/Dockerfile
+
+  challenge.api:
+    image: ${DOCKER_REGISTRY-}challengeapi
+    build:
+      context: .
+      dockerfile: Services/ChallengeService/Challenge.API/Dockerfile
+
+volumes:
+  mongo_data_announcement:
+  mongo_data_plan:
+  mongo_data_inquiry:
+  mongo_data_notification:
+  mongo_data_challenge:
+  #mongo_data_chat:
+  #mongo_data_diet:
+  #mongo_data_fitness:
+  #mongo_data_profile:
+  #mongo_data_survey:
+  portainer_data:
+
+
