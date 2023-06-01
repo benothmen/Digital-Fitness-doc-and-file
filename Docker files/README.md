@@ -25,4 +25,5 @@ docker-compose -f docker-compose.yml -f docker-compose.override.yml up -d
 ```
 ### Note: 
 The `-f` flag is used to specify multiple Compose files to be used together.
+
 The `-d` option stands for "detached mode," which means the containers will run in the background. This option allows you to continue using the terminal while the containers are running.
