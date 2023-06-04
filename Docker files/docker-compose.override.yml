@@ -38,41 +38,41 @@ services:
       - "27021:27017"
     volumes:
       - mongo_data_challenge:/data/db
-  #chatdb:
-  #  container_name: chatdb
-  #  restart: always
-  #  ports:
-  #    - "27022:27017"
-  #  volumes:
-  #    - mongo_data_chat:/data/db
-  #dietdb:
-  #  container_name: dietdb
-  #  restart: always
-  #  ports:
-  #    - "27023:27017"
-  #  volumes:
-  #    - mongo_data_diet:/data/db
-  #fitnessdb:
-  #  container_name: fitnessdb
-  #  restart: always
-  #  ports:
-  #    - "27024:27017"
-  #  volumes:
-  #    - mongo_data_fitness:/data/db
-  #profiledb:
-  #  container_name: profiledb
-  #  restart: always
-  #  ports:
-  #    - "27025:27017"
-  #  volumes:
-  #    - mongo_data_profile:/data/db
-  #surveydb:
-  #  container_name: surveydb
-  #  restart: always
-  #  ports:
-  #    - "27026:27017"
-  #  volumes:
-  #    - mongo_data_profile:/data/db
+  chatdb:
+    container_name: chatdb
+    restart: always
+    ports:
+      - "27022:27017"
+    volumes:
+      - mongo_data_chat:/data/db
+  dietdb:
+    container_name: dietdb
+    restart: always
+    ports:
+      - "27023:27017"
+    volumes:
+      - mongo_data_diet:/data/db
+  fitnessdb:
+    container_name: fitnessdb
+    restart: always
+    ports:
+      - "27024:27017"
+    volumes:
+      - mongo_data_fitness:/data/db
+  profiledb:
+    container_name: profiledb
+    restart: always
+    ports:
+      - "27025:27017"
+    volumes:
+      - mongo_data_profile:/data/db
+  surveydb:
+    container_name: surveydb
+    restart: always
+    ports:
+      - "27026:27017"
+    volumes:
+      - mongo_data_profile:/data/db
 
   # end of database part
   # real time part
@@ -106,6 +106,7 @@ services:
       - "DatabaseSettings:ConnectionString=mongodb://announcementdb:27017"
     depends_on:
       - announcementdb
+      - rabbitmq 
     ports:
       - "8000:80"
     volumes:
@@ -162,5 +163,70 @@ services:
     volumes:
       - ${APPDATA}/Microsoft/UserSecrets:/root/.microsoft/usersecrets:ro
       - ${APPDATA}/ASP.NET/Https:/root/.aspnet/https:ro
+ 
+  survey.api:
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+      - ASPNETCORE_URLS=http://+:80
+      - "DatabaseSettings:ConnectionString=mongodb://surveydb:27026"
+    depends_on:
+      - surveydb
+    ports:
+      - "8005:80"
+    volumes:
+      - ${APPDATA}/Microsoft/UserSecrets:/root/.microsoft/usersecrets:ro
+      - ${APPDATA}/ASP.NET/Https:/root/.aspnet/https:ro
 
- # end of service part 
+  profile.api:
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+      - ASPNETCORE_URLS=http://+:80
+      - "DatabaseSettings:ConnectionString=mongodb://profiledb:27025"
+    depends_on:
+      - profiledb
+    ports:
+      - "8006:80"
+    volumes:
+      - ${APPDATA}/Microsoft/UserSecrets:/root/.microsoft/usersecrets:ro
+      - ${APPDATA}/ASP.NET/Https:/root/.aspnet/https:ro
+ 
+  fitness.api:
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+      - ASPNETCORE_URLS=http://+:80
+      - "DatabaseSettings:ConnectionString=mongodb://fitnessdb:27024"
+    depends_on:
+      - fitnessdb
+    ports:
+      - "8007:80"
+    volumes:
+      - ${APPDATA}/Microsoft/UserSecrets:/root/.microsoft/usersecrets:ro
+      - ${APPDATA}/ASP.NET/Https:/root/.aspnet/https:ro
+ 
+  diet.api:
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+      - ASPNETCORE_URLS=http://+:80
+      - "DatabaseSettings:ConnectionString=mongodb://dietdb:27023"
+    depends_on:
+      - dietdb
+    ports:
+      - "8008:80"
+    volumes:
+      - ${APPDATA}/Microsoft/UserSecrets:/root/.microsoft/usersecrets:ro
+      - ${APPDATA}/ASP.NET/Https:/root/.aspnet/https:ro
+ 
+  chat.api:
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+      - ASPNETCORE_URLS=http://+:80
+      - "DatabaseSettings:ConnectionString=mongodb://chatdb:27022"
+    depends_on:
+      - chatdb
+    ports:
+      - "8009:80"
+    volumes:
+      - ${APPDATA}/Microsoft/UserSecrets:/root/.microsoft/usersecrets:ro
+      - ${APPDATA}/ASP.NET/Https:/root/.aspnet/https:ro
+ 
+ # end of service part
