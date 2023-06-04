@@ -8,10 +8,10 @@ metadata:
 spec:
   tls:
     - hosts:
-      - frontend.52.142.236.126.nip.io # update IP address here
+      - fitness.52.142.236.126.nip.io # update IP address here
       secretName: app-web-cert
   rules:
-  - host: frontend.52.142.236.126.nip.io # update IP address here
+  - host: fitness.52.142.236.126.nip.io # update IP address here
     http:
       paths:
       - backend:
