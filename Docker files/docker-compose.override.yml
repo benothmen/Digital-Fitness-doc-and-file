@@ -72,7 +72,7 @@ services:
     ports:
       - "27026:27017"
     volumes:
-      - mongo_data_profile:/data/db
+      - mongo_data_survey:/data/db
 
   # end of database part
   # real time part
@@ -104,6 +104,7 @@ services:
       - ASPNETCORE_ENVIRONMENT=Development
       - ASPNETCORE_URLS=http://+:80
       - "DatabaseSettings:ConnectionString=mongodb://announcementdb:27017"
+      - "EventBusSettings:HostAddress=amqp://guest:guest@rabbitmq:5672"
     depends_on:
       - announcementdb
       - rabbitmq 
@@ -143,6 +144,7 @@ services:
       - ASPNETCORE_ENVIRONMENT=Development
       - ASPNETCORE_URLS=http://+:80
       - "DatabaseSettings:ConnectionString=mongodb://notificationdb:27020"
+      - "EventBusSettings:HostAddress=amqp://guest:guest@rabbitmq:5672"
     depends_on:
       - notificationdb
       - rabbitmq 
