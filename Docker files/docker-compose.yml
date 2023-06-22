@@ -11,16 +11,16 @@ services:
     image: mongo
   challengedb:
     image: mongo
-  #chatdb:
-  #  image: mongo
-  #dietdb:
-  #  image: mongo
-  #fitnessdb:
-  #  image: mongo
-  #profiledb:
-  #  image: mongo
-  #surveydb:
-  #  image: mongo
+  chatdb:
+    image: mongo
+  dietdb:
+    image: mongo
+  fitnessdb:
+    image: mongo
+  profiledb:
+    image: mongo
+  surveydb:
+    image: mongo
   rabbitmq:
     image: rabbitmq:3-management-alpine
 
@@ -57,17 +57,45 @@ services:
       context: .
       dockerfile: Services/ChallengeService/Challenge.API/Dockerfile
 
+  survey.api:
+    image: ${DOCKER_REGISTRY-}surveyapi
+    build:
+      context: .
+      dockerfile: Services/SurveyService/Survey.API/Dockerfile
+
+  profile.api:
+    image: ${DOCKER_REGISTRY-}profileapi
+    build:
+      context: .
+      dockerfile: Services/ProfileService/Profile.API/Dockerfile
+
+  fitness.api:
+    image: ${DOCKER_REGISTRY-}fitnessapi
+    build:
+      context: .
+      dockerfile: Services/FitnessService/Fitness.API/Dockerfile
+
+  diet.api:
+    image: ${DOCKER_REGISTRY-}dietapi
+    build:
+      context: .
+      dockerfile: Services/DietAndFoodService/Diet.API/Dockerfile
+
+  chat.api:
+    image: ${DOCKER_REGISTRY-}chatapi
+    build:
+      context: .
+      dockerfile: Services/ChatService/Chat.API/Dockerfile
+
 volumes:
   mongo_data_announcement:
   mongo_data_plan:
   mongo_data_inquiry:
   mongo_data_notification:
   mongo_data_challenge:
-  #mongo_data_chat:
-  #mongo_data_diet:
-  #mongo_data_fitness:
-  #mongo_data_profile:
-  #mongo_data_survey:
+  mongo_data_chat:
+  mongo_data_diet:
+  mongo_data_fitness:
+  mongo_data_profile:
+  mongo_data_survey:
   portainer_data:
-
-
