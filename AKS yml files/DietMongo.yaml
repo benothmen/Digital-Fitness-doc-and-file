@@ -3,29 +3,22 @@ kind: Deployment
 metadata:
   name: dietmongo-deployment
   labels:
-    app: mongodb
+    app: diet-mongodb
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: mongodb
+      app: diet-mongodb
   template:
     metadata:
       labels:
-        app: mongodb
+        app: diet-mongodb
     spec:
       containers:
-        - name: mongodb
+        - name: diet-mongodb
           image: mongo
           ports:
             - containerPort: 27017
-          resources:
-            requests:
-              memory: "64Mi"
-              cpu: "250m"
-            limits:
-              memory: "128Mi"
-              cpu: "500m"
           env:
             - name: MONGO_INITDB_ROOT_USERNAME
               valueFrom:
@@ -44,7 +37,7 @@ metadata:
   name: dietmongo-service
 spec:
   selector:
-    app: mongodb
+    app: diet-mongodb
   ports:
     - protocol: TCP
       port: 27017

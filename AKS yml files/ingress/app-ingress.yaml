@@ -9,88 +9,76 @@ metadata:
     nginx.ingress.kubernetes.io/rewrite-target: /$1
 spec:
   rules:
+  - host: digitalfitness.eastus.cloudapp.azure.com
   - http:
       paths:
-      - backend:
-          serviceName: announcementapi-service
-          servicePort: 80
-        path: /announcement(/|$)(.*)
-      - backend:
-          serviceName: challengeapi-service
-          servicePort: 80
-        path: /challenge(/|$)(.*)
-      - backend:
-          serviceName: chatapi-service
-          servicePort: 80
-        path: /chat(/|$)(.*)
-      - backend:
-          serviceName: dietapi-service
-          servicePort: 80
-        path: /diet(/|$)(.*)
-      - backend:
-          serviceName: fitnessapi-service
-          servicePort: 80
-        path: /fitness(/|$)(.*)
-      - backend:
-          serviceName: inquiryapi-service
-          servicePort: 80
-        path: /inquiry(/|$)(.*)
-      - backend:
-          serviceName: notificationapi-service
-          servicePort: 80
-        path: /notification(/|$)(.*)
-      - backend:
-          serviceName: planapi-service
-          servicePort: 80
-        path: /plan(/|$)(.*)
-      - backend:
-          serviceName: profileapi-service
-          servicePort: 80
-        path: /profile(/|$)(.*)
-      - backend:
-          serviceName: surveyapi-service
-          servicePort: 80
-        path: /survey(/|$)(.*)
-  - host: digitalfitness.eastus.cloudapp.azure.com
-    http:
-      paths:
-      - backend:
-          serviceName: announcementapi-service
-          servicePort: 80
-        path: /announcement(/|$)(.*)
-      - backend:
-          serviceName: challengeapi-service
-          servicePort: 80
-        path: /challenge(/|$)(.*)
-      - backend:
-          serviceName: chatapi-service
-          servicePort: 80
-        path: /chat(/|$)(.*)
-      - backend:
-          serviceName: dietapi-service
-          servicePort: 80
-        path: /diet(/|$)(.*)
-      - backend:
-          serviceName: fitnessapi-service
-          servicePort: 80
-        path: /fitness(/|$)(.*)
-      - backend:
-          serviceName: inquiryapi-service
-          servicePort: 80
-        path: /inquiry(/|$)(.*)
-      - backend:
-          serviceName: notificationapi-service
-          servicePort: 80
-        path: /notification(/|$)(.*)
-      - backend:
-          serviceName: planapi-service
-          servicePort: 80
-        path: /plan(/|$)(.*)
-      - backend:
-          serviceName: profileapi-service
-          servicePort: 80
-        path: /profile(/|$)(.*)
-      - backend:
-          serviceName: surveyapi-service
-          servicePort: 80
-        path: /survey(/|$)(.*)
+      - path: /announcement(/|$)(.*)
+        pathType: Prefix
+        backend:
+          service:
+            name: announcementapi-service
+            port:
+              number: 80
+      - path: /challenge(/|$)(.*)
+        pathType: Prefix
+        backend:
+          service:
+            name: challengeapi-service
+            port:
+              number: 80
+      - path: /chat(/|$)(.*)
+        pathType: Prefix
+        backend:
+          service:
+            name: chatapi-service
+            port:
+              number: 80
+      - path: /diet(/|$)(.*)
+        pathType: Prefix
+        backend:
+          service:
+            name: dietapi-service
+            port:
+              number: 80
+      - path: /fitness(/|$)(.*)
+        pathType: Prefix
+        backend:
+          service:
+            name: fitnessapi-service
+            port:
+              number: 80
+      - path: /inquiry(/|$)(.*)
+        pathType: Prefix
+        backend:
+          service:
+            name: inquiryapi-service
+            port:
+              number: 80
+      - path: /notification(/|$)(.*)
+        pathType: Prefix
+        backend:
+          service:
+            name: notificationapi-service
+            port:
+              number: 80
+      - path: /plan(/|$)(.*)
+        pathType: Prefix
+        backend:
+          service:
+            name: planapi-service
+            port:
+              number: 80
+      - path: /profile(/|$)(.*)
+        pathType: Prefix
+        backend:
+          service:
+            name: profileapi-service
+            port:
+              number: 80
+      - path: /survey(/|$)(.*)
+        pathType: Prefix
+        backend:
+          service:
+            name: surveyapi-service
+            port:
+              number: 80
