@@ -13,85 +13,85 @@ spec:
   - http:
       paths:
       - backend:
-          serviceName: ${ingress-config.ingress-service-config.announcement-service-name}
+          serviceName: announcementapi-service
           servicePort: 80
         path: /announcement(/|$)(.*)
       - backend:
-          serviceName: ${ingress-config.ingress-service-config.challenge-service-name}
+          serviceName: challengeapi-service
           servicePort: 80
         path: /challenge(/|$)(.*)
       - backend:
-          serviceName: ${ingress-config.ingress-service-config.chat-service-name}
+          serviceName: chatapi-service
           servicePort: 80
         path: /chat(/|$)(.*)
       - backend:
-          serviceName: ${ingress-config.ingress-service-config.diet-service-name}
+          serviceName: dietapi-service
           servicePort: 80
         path: /diet(/|$)(.*)
       - backend:
-          serviceName: ${ingress-config.ingress-service-config.fitness-service-name}
+          serviceName: fitnessapi-service
           servicePort: 80
         path: /fitness(/|$)(.*)
       - backend:
-          serviceName: ${ingress-config.ingress-service-config.inquiry-service-name}
+          serviceName: inquiryapi-service
           servicePort: 80
         path: /inquiry(/|$)(.*)
       - backend:
-          serviceName: ${ingress-config.ingress-service-config.notification-service-name}
+          serviceName: notificationapi-service
           servicePort: 80
         path: /notification(/|$)(.*)
       - backend:
-          serviceName: ${ingress-config.ingress-service-config.plan-service-name}
+          serviceName: planapi-service
           servicePort: 80
         path: /plan(/|$)(.*)
       - backend:
-          serviceName: ${ingress-config.ingress-service-config.profile-service-name}
+          serviceName: profileapi-service
           servicePort: 80
         path: /profile(/|$)(.*)
       - backend:
-          serviceName: ${ingress-config.ingress-service-config.survey-service-name}
+          serviceName: surveyapi-service
           servicePort: 80
         path: /survey(/|$)(.*)
   - host: digitalfitness.eastus.cloudapp.azure.com
     http:
       paths:
       - backend:
-          serviceName: ${ingress-config.ingress-service-config.announcement-service-name}
+          serviceName: announcementapi-service
           servicePort: 80
         path: /announcement(/|$)(.*)
       - backend:
-          serviceName: ${ingress-config.ingress-service-config.challenge-service-name}
+          serviceName: challengeapi-service
           servicePort: 80
         path: /challenge(/|$)(.*)
       - backend:
-          serviceName: ${ingress-config.ingress-service-config.chat-service-name}
+          serviceName: chatapi-service
           servicePort: 80
         path: /chat(/|$)(.*)
       - backend:
-          serviceName: ${ingress-config.ingress-service-config.diet-service-name}
+          serviceName: dietapi-service
           servicePort: 80
         path: /diet(/|$)(.*)
       - backend:
-          serviceName: ${ingress-config.ingress-service-config.fitness-service-name}
+          serviceName: fitnessapi-service
           servicePort: 80
         path: /fitness(/|$)(.*)
       - backend:
-          serviceName: ${ingress-config.ingress-service-config.inquiry-service-name}
+          serviceName: inquiryapi-service
           servicePort: 80
         path: /inquiry(/|$)(.*)
       - backend:
-          serviceName: ${ingress-config.ingress-service-config.notification-service-name}
+          serviceName: notificationapi-service
           servicePort: 80
         path: /notification(/|$)(.*)
       - backend:
-          serviceName: ${ingress-config.ingress-service-config.plan-service-name}
+          serviceName: planapi-service
           servicePort: 80
         path: /plan(/|$)(.*)
       - backend:
-          serviceName: ${ingress-config.ingress-service-config.profile-service-name}
+          serviceName: profileapi-service
           servicePort: 80
         path: /profile(/|$)(.*)
       - backend:
-          serviceName: ${ingress-config.ingress-service-config.survey-service-name}
+          serviceName: surveyapi-service
           servicePort: 80
         path: /survey(/|$)(.*)
