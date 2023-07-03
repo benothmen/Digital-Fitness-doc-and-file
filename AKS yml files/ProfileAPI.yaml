@@ -36,8 +36,9 @@ kind: Service
 metadata:
   name: profileapi-service
 spec:
+  type: LoadBalancer
   selector:
     app: profileapi
   ports:
     - protocol: TCP
-      port: 80           
+      port: 80    
