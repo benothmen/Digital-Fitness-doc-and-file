@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
         - name: inquiryapi
-          image: fitnessacr.azurecr.io/inquiryapi:v2
+          image: fitnessacr.azurecr.io/inquiry-api:v1
           imagePullPolicy: IfNotPresent          
           ports:
             - containerPort: 80

@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
         - name: challengeapi
-          image: fitnessacr.azurecr.io/challengeapi:v2
+          image: fitnessacr.azurecr.io/challenge-api:v1
           imagePullPolicy: IfNotPresent          
           ports:
             - containerPort: 80

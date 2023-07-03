@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
         - name: planapi
-          image: fitnessacr.azurecr.io/planapi:v2
+          image: fitnessacr.azurecr.io/plan-api:v1
           imagePullPolicy: IfNotPresent          
           ports:
             - containerPort: 80

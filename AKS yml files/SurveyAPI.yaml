@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
         - name: surveyapi
-          image: fitnessacr.azurecr.io/surveyapi:v2
+          image: fitnessacr.azurecr.io/survey-api:v1
           imagePullPolicy: IfNotPresent          
           ports:
             - containerPort: 80

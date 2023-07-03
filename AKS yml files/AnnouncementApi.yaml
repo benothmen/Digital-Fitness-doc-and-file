@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
         - name: announcementapi
-          image: fitnessacr.azurecr.io/announcementapi:v2
+          image: fitnessacr.azurecr.io/announcement-api:v1
           imagePullPolicy: IfNotPresent          
           ports:
             - containerPort: 80
