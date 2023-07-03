@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
         - name: profileapi
-          image: fitnessacr.azurecr.io/profileapi:v2
+          image: fitnessacr.azurecr.io/profile-api:v1
           imagePullPolicy: IfNotPresent          
           ports:
             - containerPort: 80

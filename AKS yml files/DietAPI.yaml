@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
         - name: dietapi
-          image: fitnessacr.azurecr.io/dietapi:v2
+          image: fitnessacr.azurecr.io/diet-api:v1
           imagePullPolicy: IfNotPresent          
           ports:
             - containerPort: 80

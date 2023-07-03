@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
         - name: notificationapi
-          image: fitnessacr.azurecr.io/notificationapi:v2
+          image: fitnessacr.azurecr.io/notification-api:v1
           imagePullPolicy: IfNotPresent          
           ports:
             - containerPort: 80

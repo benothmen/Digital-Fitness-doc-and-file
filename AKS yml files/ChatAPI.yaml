@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
         - name: chatapi
-          image: fitnessacr.azurecr.io/chatapi:v2
+          image: fitnessacr.azurecr.io/chat-api:v1
           imagePullPolicy: IfNotPresent          
           ports:
             - containerPort: 80
