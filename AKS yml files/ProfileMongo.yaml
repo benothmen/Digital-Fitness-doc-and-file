@@ -3,19 +3,19 @@ kind: Deployment
 metadata:
   name: profilemongo-deployment
   labels:
-    app: profile-mongodb
+    app: mongodb
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: profile-mongodb
+      app: mongodb
   template:
     metadata:
       labels:
-        app: profile-mongodb
+        app: mongodb
     spec:
       containers:
-        - name: profile-mongodb
+        - name: mongodb
           image: mongo
           ports:
             - containerPort: 27017
@@ -37,7 +37,7 @@ metadata:
   name: profilemongo-service
 spec:
   selector:
-    app: profile-mongodb
+    app: mongodb
   ports:
     - protocol: TCP
       port: 27017

@@ -3,19 +3,19 @@ kind: Deployment
 metadata:
   name: inquirymongo-deployment
   labels:
-    app: inquiry-mongodb
+    app: mongodb
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: inquiry-mongodb
+      app: mongodb
   template:
     metadata:
       labels:
-        app: inquiry-mongodb
+        app: mongodb
     spec:
       containers:
-        - name: inquiry-mongodb
+        - name: mongodb
           image: mongo
           ports:
             - containerPort: 27017
@@ -37,7 +37,7 @@ metadata:
   name: inquirymongo-service
 spec:
   selector:
-    app: inquiry-mongodb
+    app: mongodb
   ports:
     - protocol: TCP
       port: 27017

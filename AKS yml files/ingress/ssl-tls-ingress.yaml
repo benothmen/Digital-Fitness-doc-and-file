@@ -12,88 +12,75 @@ spec:
       secretName: app-web-cert
   rules:
   - host: digitalfitness.eastus.cloudapp.azure.com
-    - http:
-      paths:
-      - backend:
-          serviceName: ${ingress-config.ingress-service-config.announcement-service-name}
-          servicePort: 80
-        path: /announcement(/|$)(.*)
-      - backend:
-          serviceName: ${ingress-config.ingress-service-config.challenge-service-name}
-          servicePort: 80
-        path: /challenge(/|$)(.*)
-      - backend:
-          serviceName: ${ingress-config.ingress-service-config.chat-service-name}
-          servicePort: 80
-        path: /chat(/|$)(.*)
-      - backend:
-          serviceName: ${ingress-config.ingress-service-config.diet-service-name}
-          servicePort: 80
-        path: /diet(/|$)(.*)
-      - backend:
-          serviceName: ${ingress-config.ingress-service-config.fitness-service-name}
-          servicePort: 80
-        path: /fitness(/|$)(.*)
-      - backend:
-          serviceName: ${ingress-config.ingress-service-config.inquiry-service-name}
-          servicePort: 80
-        path: /inquiry(/|$)(.*)
-      - backend:
-          serviceName: ${ingress-config.ingress-service-config.notification-service-name}
-          servicePort: 80
-        path: /notification(/|$)(.*)
-      - backend:
-          serviceName: ${ingress-config.ingress-service-config.plan-service-name}
-          servicePort: 80
-        path: /plan(/|$)(.*)
-      - backend:
-          serviceName: ${ingress-config.ingress-service-config.profile-service-name}
-          servicePort: 80
-        path: /profile(/|$)(.*)
-      - backend:
-          serviceName: ${ingress-config.ingress-service-config.survey-service-name}
-          servicePort: 80
-        path: /survey(/|$)(.*)
-  - host: digitalfitness.eastus.cloudapp.azure.com
     http:
       paths:
-      - backend:
-          serviceName: ${ingress-config.ingress-service-config.announcement-service-name}
-          servicePort: 80
-        path: /announcement(/|$)(.*)
-      - backend:
-          serviceName: ${ingress-config.ingress-service-config.challenge-service-name}
-          servicePort: 80
-        path: /challenge(/|$)(.*)
-      - backend:
-          serviceName: ${ingress-config.ingress-service-config.chat-service-name}
-          servicePort: 80
-        path: /chat(/|$)(.*)
-      - backend:
-          serviceName: ${ingress-config.ingress-service-config.diet-service-name}
-          servicePort: 80
-        path: /diet(/|$)(.*)
-      - backend:
-          serviceName: ${ingress-config.ingress-service-config.fitness-service-name}
-          servicePort: 80
-        path: /fitness(/|$)(.*)
-      - backend:
-          serviceName: ${ingress-config.ingress-service-config.inquiry-service-name}
-          servicePort: 80
-        path: /inquiry(/|$)(.*)
-      - backend:
-          serviceName: ${ingress-config.ingress-service-config.notification-service-name}
-          servicePort: 80
-        path: /notification(/|$)(.*)
-      - backend:
-          serviceName: ${ingress-config.ingress-service-config.plan-service-name}
-          servicePort: 80
-        path: /plan(/|$)(.*)
-      - backend:
-          serviceName: ${ingress-config.ingress-service-config.profile-service-name}
-          servicePort: 80
-        path: /profile(/|$)(.*)
-      - backend:
-          serviceName: ${ingress-config.ingress-service-config.survey-service-name}
-          servicePort: 80
-        path: /survey(/|$)(.*)
+      - path: /announcement(/|$)(.*)
+        pathType: Prefix
+        backend:
+          service:
+            name: announcementapi-service
+            port:
+              number: 80
+      - path: /challenge(/|$)(.*)
+        pathType: Prefix
+        backend:
+          service:
+            name: challengeapi-service
+            port:
+              number: 80
+      - path: /chat(/|$)(.*)
+        pathType: Prefix
+        backend:
+          service:
+            name: chatapi-service
+            port:
+              number: 80
+      - path: /diet(/|$)(.*)
+        pathType: Prefix
+        backend:
+          service:
+            name: dietapi-service
+            port:
+              number: 80
+      - path: /fitness(/|$)(.*)
+        pathType: Prefix
+        backend:
+          service:
+            name: fitnessapi-service
+            port:
+              number: 80
+      - path: /inquiry(/|$)(.*)
+        pathType: Prefix
+        backend:
+          service:
+            name: inquiryapi-service
+            port:
+              number: 80
+      - path: /notification(/|$)(.*)
+        pathType: Prefix
+        backend:
+          service:
+            name: notificationapi-service
+            port:
+              number: 80
+      - path: /plan(/|$)(.*)
+        pathType: Prefix
+        backend:
+          service:
+            name: planapi-service
+            port:
+              number: 80
+      - path: /profile(/|$)(.*)
+        pathType: Prefix
+        backend:
+          service:
+            name: profileapi-service
+            port:
+              number: 80
+      - path: /survey(/|$)(.*)
+        pathType: Prefix
+        backend:
+          service:
+            name: surveyapi-service
+            port:
+              number: 80

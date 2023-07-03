@@ -3,19 +3,19 @@ kind: Deployment
 metadata:
   name: notificationmongo-deployment
   labels:
-    app: notification-mongodb
+    app: mongodb
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: notification-mongodb
+      app: mongodb
   template:
     metadata:
       labels:
-        app: notification-mongodb
+        app: mongodb
     spec:
       containers:
-        - name: notification-mongodb
+        - name: mongodb
           image: mongo
           ports:
             - containerPort: 27017
@@ -37,7 +37,7 @@ metadata:
   name: notificationmongo-service
 spec:
   selector:
-    app: notification-mongodb
+    app: mongodb
   ports:
     - protocol: TCP
       port: 27017

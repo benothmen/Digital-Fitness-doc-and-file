@@ -3,19 +3,19 @@ kind: Deployment
 metadata:
   name: announcementmongo-deployment
   labels:
-    app: announcement-mongodb
+    app: mongodb
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: announcement-mongodb
+      app: mongodb
   template:
     metadata:
       labels:
-        app: announcement-mongodb
+        app: mongodb
     spec:
       containers:
-        - name: announcement-mongodb
+        - name: mongodb
           image: mongo
           ports:
             - containerPort: 27017
@@ -37,7 +37,7 @@ metadata:
   name: announcementmongo-service
 spec:
   selector:
-    app: announcement-mongodb
+    app: mongodb
   ports:
     - protocol: TCP
       port: 27017

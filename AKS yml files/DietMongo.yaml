@@ -3,19 +3,19 @@ kind: Deployment
 metadata:
   name: dietmongo-deployment
   labels:
-    app: diet-mongodb
+    app: mongodb
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: diet-mongodb
+      app: mongodb
   template:
     metadata:
       labels:
-        app: diet-mongodb
+        app: mongodb
     spec:
       containers:
-        - name: diet-mongodb
+        - name: mongodb
           image: mongo
           ports:
             - containerPort: 27017
@@ -37,7 +37,7 @@ metadata:
   name: dietmongo-service
 spec:
   selector:
-    app: diet-mongodb
+    app: mongodb
   ports:
     - protocol: TCP
       port: 27017

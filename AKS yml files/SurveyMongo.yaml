@@ -3,19 +3,19 @@ kind: Deployment
 metadata:
   name: surveymongo-deployment
   labels:
-    app: survey-mongodb
+    app: mongodb
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: survey-mongodb
+      app: mongodb
   template:
     metadata:
       labels:
-        app: survey-mongodb
+        app: mongodb
     spec:
       containers:
-        - name: survey-mongodb
+        - name: mongodb
           image: mongo
           ports:
             - containerPort: 27017
@@ -37,7 +37,7 @@ metadata:
   name: surveymongo-service
 spec:
   selector:
-    app: survey-mongodb
+    app: mongodb
   ports:
     - protocol: TCP
       port: 27017

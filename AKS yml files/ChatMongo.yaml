@@ -3,19 +3,19 @@ kind: Deployment
 metadata:
   name: chatmongo-deployment
   labels:
-    app: chat-mongodb
+    app: mongodb
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: chat-mongodb
+      app: mongodb
   template:
     metadata:
       labels:
-        app: chat-mongodb
+        app: mongodb
     spec:
       containers:
-        - name: chat-mongodb
+        - name: mongodb
           image: mongo
           ports:
             - containerPort: 27017
@@ -37,7 +37,7 @@ metadata:
   name: chatmongo-service
 spec:
   selector:
-    app: chat-mongodb
+    app: mongodb
   ports:
     - protocol: TCP
       port: 27017

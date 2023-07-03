@@ -10,7 +10,7 @@ metadata:
 spec:
   rules:
   - host: digitalfitness.eastus.cloudapp.azure.com
-  - http:
+    http:
       paths:
       - path: /announcement(/|$)(.*)
         pathType: Prefix
