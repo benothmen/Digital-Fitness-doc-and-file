@@ -52,7 +52,7 @@ spec:
           serviceName: ${ingress-config.ingress-service-config.survey-service-name}
           servicePort: 80
         path: /survey(/|$)(.*)
-  - host: frontend.52.142.236.126.nip.io # change the IP address here
+  - host: digitalfitness.eastus.cloudapp.azure.com
     http:
       paths:
       - backend:

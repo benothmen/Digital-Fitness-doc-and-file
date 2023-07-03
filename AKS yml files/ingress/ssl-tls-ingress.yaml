@@ -8,13 +8,92 @@ metadata:
 spec:
   tls:
     - hosts:
-      - fitness.52.142.236.126.nip.io # update IP address here
+      - digitalfitness.eastus.cloudapp.azure.com
       secretName: app-web-cert
   rules:
-  - host: fitness.52.142.236.126.nip.io # update IP address here
+  - host: digitalfitness.eastus.cloudapp.azure.com
+    - http:
+      paths:
+      - backend:
+          serviceName: ${ingress-config.ingress-service-config.announcement-service-name}
+          servicePort: 80
+        path: /announcement(/|$)(.*)
+      - backend:
+          serviceName: ${ingress-config.ingress-service-config.challenge-service-name}
+          servicePort: 80
+        path: /challenge(/|$)(.*)
+      - backend:
+          serviceName: ${ingress-config.ingress-service-config.chat-service-name}
+          servicePort: 80
+        path: /chat(/|$)(.*)
+      - backend:
+          serviceName: ${ingress-config.ingress-service-config.diet-service-name}
+          servicePort: 80
+        path: /diet(/|$)(.*)
+      - backend:
+          serviceName: ${ingress-config.ingress-service-config.fitness-service-name}
+          servicePort: 80
+        path: /fitness(/|$)(.*)
+      - backend:
+          serviceName: ${ingress-config.ingress-service-config.inquiry-service-name}
+          servicePort: 80
+        path: /inquiry(/|$)(.*)
+      - backend:
+          serviceName: ${ingress-config.ingress-service-config.notification-service-name}
+          servicePort: 80
+        path: /notification(/|$)(.*)
+      - backend:
+          serviceName: ${ingress-config.ingress-service-config.plan-service-name}
+          servicePort: 80
+        path: /plan(/|$)(.*)
+      - backend:
+          serviceName: ${ingress-config.ingress-service-config.profile-service-name}
+          servicePort: 80
+        path: /profile(/|$)(.*)
+      - backend:
+          serviceName: ${ingress-config.ingress-service-config.survey-service-name}
+          servicePort: 80
+        path: /survey(/|$)(.*)
+  - host: digitalfitness.eastus.cloudapp.azure.com
     http:
       paths:
       - backend:
-          serviceName: webapp2-svc
+          serviceName: ${ingress-config.ingress-service-config.announcement-service-name}
           servicePort: 80
-        path: /
+        path: /announcement(/|$)(.*)
+      - backend:
+          serviceName: ${ingress-config.ingress-service-config.challenge-service-name}
+          servicePort: 80
+        path: /challenge(/|$)(.*)
+      - backend:
+          serviceName: ${ingress-config.ingress-service-config.chat-service-name}
+          servicePort: 80
+        path: /chat(/|$)(.*)
+      - backend:
+          serviceName: ${ingress-config.ingress-service-config.diet-service-name}
+          servicePort: 80
+        path: /diet(/|$)(.*)
+      - backend:
+          serviceName: ${ingress-config.ingress-service-config.fitness-service-name}
+          servicePort: 80
+        path: /fitness(/|$)(.*)
+      - backend:
+          serviceName: ${ingress-config.ingress-service-config.inquiry-service-name}
+          servicePort: 80
+        path: /inquiry(/|$)(.*)
+      - backend:
+          serviceName: ${ingress-config.ingress-service-config.notification-service-name}
+          servicePort: 80
+        path: /notification(/|$)(.*)
+      - backend:
+          serviceName: ${ingress-config.ingress-service-config.plan-service-name}
+          servicePort: 80
+        path: /plan(/|$)(.*)
+      - backend:
+          serviceName: ${ingress-config.ingress-service-config.profile-service-name}
+          servicePort: 80
+        path: /profile(/|$)(.*)
+      - backend:
+          serviceName: ${ingress-config.ingress-service-config.survey-service-name}
+          servicePort: 80
+        path: /survey(/|$)(.*)
