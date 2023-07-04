@@ -36,6 +36,7 @@ kind: Service
 metadata:
   name: surveyapi-service
 spec:
+  type: LoadBalancer
   selector:
     app: surveyapi
   ports:

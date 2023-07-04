@@ -28,6 +28,8 @@ spec:
                   configMapKeyRef:
                     name: mongo-configmap
                     key: announcement_connection_string
+            - name: EventBusSettings__HostAddress
+              value: amqp://guest:guest@rabbitmq-service:5672
       imagePullSecrets:
         - name: acr-secret
 ---
@@ -36,6 +38,7 @@ kind: Service
 metadata:
   name: announcementapi-service
 spec:
+  type: LoadBalancer
   selector:
     app: announcementapi
   ports:

@@ -37,6 +37,7 @@ metadata:
   name: profileapi-service
 spec:
   type: LoadBalancer
+  type: LoadBalancer
   selector:
     app: profileapi
   ports:

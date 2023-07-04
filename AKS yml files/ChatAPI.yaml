@@ -36,6 +36,7 @@ kind: Service
 metadata:
   name: chatapi-service
 spec:
+  type: LoadBalancer
   selector:
     app: chatapi
   ports:

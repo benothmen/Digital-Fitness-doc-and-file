@@ -36,6 +36,7 @@ kind: Service
 metadata:
   name: planapi-service
 spec:
+  type: LoadBalancer
   selector:
     app: planapi
   ports:

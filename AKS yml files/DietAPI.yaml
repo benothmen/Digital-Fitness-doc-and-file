@@ -28,6 +28,8 @@ spec:
                   configMapKeyRef:
                     name: mongo-configmap
                     key: diet_connection_string
+            - name: EventBusSettings__HostAddress
+              value: amqp://guest:guest@rabbitmq-service.default:5672
       imagePullSecrets:
         - name: acr-secret
 ---
@@ -36,6 +38,7 @@ kind: Service
 metadata:
   name: dietapi-service
 spec:
+  type: LoadBalancer
   selector:
     app: dietapi
   ports:
